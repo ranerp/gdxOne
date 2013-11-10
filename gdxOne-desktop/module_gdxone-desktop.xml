@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_gdxone-desktop" default="compile.module.gdxone-desktop">
+  <dirname property="module.gdxone-desktop.basedir" file="${ant.file.module_gdxone-desktop}"/>
+  
+  <property name="module.jdk.home.gdxone-desktop" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.gdxone-desktop" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.gdxone-desktop" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.gdxone-desktop" value="${compiler.args}"/>
+  
+  <property name="gdxone-desktop.output.dir" value="${module.gdxone-desktop.basedir}/bin"/>
+  <property name="gdxone-desktop.testoutput.dir" value="${module.gdxone-desktop.basedir}/bin"/>
+  
+  <path id="gdxone-desktop.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="gdxone-desktop.module.production.classpath">
+    <pathelement location="${gdxone.output.dir}"/>
+    <pathelement location="${basedir}/gdxOne/libs/gdx.jar"/>
+    <path refid="${module.jdk.classpath.gdxone-desktop}"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl-natives.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-natives.jar"/>
+  </path>
+  
+  <path id="gdxone-desktop.runtime.production.module.classpath">
+    <pathelement location="${gdxone-desktop.output.dir}"/>
+    <path refid="gdxone.runtime.production.module.classpath"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl-natives.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-natives.jar"/>
+  </path>
+  
+  <path id="gdxone-desktop.module.classpath">
+    <pathelement location="${gdxone-desktop.output.dir}"/>
+    <pathelement location="${gdxone.output.dir}"/>
+    <pathelement location="${basedir}/gdxOne/libs/gdx.jar"/>
+    <path refid="${module.jdk.classpath.gdxone-desktop}"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl-natives.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-natives.jar"/>
+  </path>
+  
+  <path id="gdxone-desktop.runtime.module.classpath">
+    <pathelement location="${gdxone-desktop.output.dir}"/>
+    <path refid="gdxone.runtime.module.classpath"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-backend-lwjgl-natives.jar"/>
+    <pathelement location="${basedir}/gdxOne-desktop/libs/gdx-natives.jar"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.gdxone-desktop">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.gdxone-desktop">
+    <patternset refid="excluded.from.module.gdxone-desktop"/>
+  </patternset>
+  
+  <path id="gdxone-desktop.module.sourcepath">
+    <dirset dir="${module.gdxone-desktop.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.gdxone-desktop" depends="compile.module.gdxone-desktop.production,compile.module.gdxone-desktop.tests" description="Compile module gdxOne-desktop"/>
+  
+  <target name="compile.module.gdxone-desktop.production" depends="register.custom.compilers,compile.module.gdxone" description="Compile module gdxOne-desktop; production classes">
+    <mkdir dir="${gdxone-desktop.output.dir}"/>
+    <javac2 destdir="${gdxone-desktop.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.gdxone-desktop}/javac">
+      <compilerarg line="${compiler.args.gdxone-desktop}"/>
+      <bootclasspath refid="gdxone-desktop.module.bootclasspath"/>
+      <classpath refid="gdxone-desktop.module.production.classpath"/>
+      <src refid="gdxone-desktop.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.gdxone-desktop"/>
+    </javac2>
+    
+    <copy todir="${gdxone-desktop.output.dir}">
+      <fileset dir="${module.gdxone-desktop.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.gdxone-desktop.tests" depends="register.custom.compilers,compile.module.gdxone-desktop.production" description="compile module gdxOne-desktop; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.gdxone-desktop" description="cleanup module">
+    <delete dir="${gdxone-desktop.output.dir}"/>
+    <delete dir="${gdxone-desktop.testoutput.dir}"/>
+  </target>
+</project>

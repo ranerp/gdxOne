@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gdxOne/gdxOne.iml" filepath="$PROJECT_DIR$/gdxOne/gdxOne.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gdxOne-android/gdxOne-android.iml" filepath="$PROJECT_DIR$/gdxOne-android/gdxOne-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gdxOne-desktop/gdxOne-desktop.iml" filepath="$PROJECT_DIR$/gdxOne-desktop/gdxOne-desktop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gdxOne-html/gdxOne-html.iml" filepath="$PROJECT_DIR$/gdxOne-html/gdxOne-html.iml" />
+    </modules>
+  </component>
+</project>
+

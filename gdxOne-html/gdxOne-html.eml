@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<lib name="gdx.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/../gdxOne/libs/gdx-sources.jar!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/gdxOne/libs/gdx-sources.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/gdxOne/libs/gdx.jar!/"/>
+	</lib>
+	<lib name="gdx-sources.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/gdxOne/libs/gdx-sources.jar!/"/>
+	</lib>
+	<lib name="gdx-backend-gwt.jar" scope="COMPILE">
+		<srcroot url="jar://$MODULE_DIR$/war/WEB-INF/lib/gdx-backend-gwt-sources.jar!/"/>
+		<relative-module-src project-related="jar://$PROJECT_DIR$/gdxOne-html/war/WEB-INF/lib/gdx-backend-gwt-sources.jar!/"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/gdxOne-html/war/WEB-INF/lib/gdx-backend-gwt.jar!/"/>
+	</lib>
+	<lib name="gdx-backend-gwt-sources.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/gdxOne-html/war/WEB-INF/lib/gdx-backend-gwt-sources.jar!/"/>
+	</lib>
+</component>
